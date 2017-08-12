@@ -103,7 +103,7 @@ $ curl -X DELETE -u {clientId:clientSecret} https://apibaas-trial.apigee.net/{or
 ```
 
 ## Note
-All of the material here is released under the [MIT license](https://github.com/gahana/edge-trg-labs/blob/master/LICENSE.md)
+All of the material here is released under the [MIT license](https://github.com/gahana/edge-trg-labs/blob/master/LICENSE)
 
 ## Support
 If you have any questions, please get in touch with your training instructor or search and ask questions on [community](https://community.apigee.com/index.html)
