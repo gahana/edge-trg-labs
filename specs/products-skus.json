@@ -1,0 +1,225 @@
+{
+  "swagger": "2.0",
+  "host": "apibaas-trial.apigee.net",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "info": {
+    "description": "Products Information",
+    "title": "Products",
+    "version": "1.0",
+    "termsOfService": "http://example.com/about/terms",
+    "contact": {
+      "name": "API Docs",
+      "url": "http://example.com/contact",
+      "email": "apis-eng@apigee.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://example.com"
+    }
+  },
+  "basePath": "/org/app",
+  "paths": {
+
+    "/products": {
+      "get": {
+        "description": "<p>Product Detail</p> Detailed list of all Products.",
+        "summary": "Get All Product Details ",
+        "operationId": "Get All Products",
+        "tags": [
+          "Products"
+        ],
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+                "$ref": "#/definitions/ProductDetails"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized access"
+          }
+        },
+        "parameters": [
+        ]
+      }
+    },
+    "/products/{product_id}": {
+      "get": {
+        "description": "<p>Product Detail</p> Detailed list of Product given the productId.",
+        "summary": "Product Detail ",
+        "operationId": "Get Product",
+        "tags": [
+          "Products"
+        ],
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+                "$ref": "#/definitions/ProductDetail"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized access"
+          }
+        },
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "description": "Product identifier",
+            "type": "string",
+            "required": true
+          }
+
+        ]
+      }
+    },
+    "/products/{product_id}/skus": {
+      "get": {
+        "description": "<p>SKU Detail</p> for given productId.",
+        "summary": "Get SKU Detail for a given Product",
+        "operationId": "Get Product SKU",
+        "tags": [
+          "Products"
+        ],
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+                "$ref": "#/definitions/SKUDetail"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized access"
+          }
+        },
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "description": "Product identifier",
+            "type": "string",
+            "required": true
+          }
+
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ProductDetails":{
+      "description": "Product Details",
+      "type": "array",
+      "items" : {
+            "$ref": "#/definitions/ProductDetail"
+          }
+    },
+    "ProductDetail": {
+      "description": "Product Details",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique identifier for the product"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "Display name of the product"
+        },
+        "short_description": {
+          "type": "string",
+          "description": "A short description of the product"
+        },
+        "images": {
+          "type": "array",
+          "description": "An array of image objects",
+          "items" : {
+            "type": "string",
+            "description":"Image Url"
+          }
+
+        },
+        "category": {
+          "type": "array",
+          "description": "An array of category objects",
+          "items" : {
+            "type": "string",
+            "description":"Product Categories"
+          }
+
+        },
+        "overall_rating": {
+          "type": "number",
+          "format":"float",
+          "description": "Overall customer rating for the product"
+        }
+      }
+    },
+    "SKUDetail": {
+      "description": "SKU Details",
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "string",
+          "description": "A unique identifier for the product"
+        },
+        "sku_name": {
+          "type": "string",
+          "description": "SKU name of the product"
+        },
+        "sku_description": {
+          "type": "string",
+          "description": "SKU description"
+        },
+        "images": {
+          "type": "array",
+          "description": "An array of image objects",
+          "items" : {
+            "type": "string",
+            "description":"Image Url"
+          }
+
+        },
+        "inventory_type":{
+          "type": "string",
+          "description": "Inventory Type"
+        },
+        "price": {
+          "type": "number",
+          "format":"float",
+          "description": "Price"
+        },
+        "available_quantity": {
+          "type": "integer",
+          "description": "Available Quantity"
+        },
+        "discount": {
+          "type": "number",
+          "format":"float",
+          "description": "Discount"
+        }
+      }
+    }
+  }
+}

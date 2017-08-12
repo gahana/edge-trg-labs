@@ -1,0 +1,16 @@
+{
+  "name": "trg-target-setup",
+  "version": "1.0.0",
+  "description": "Setup target endpoint in API baas for Apigee Edge training",
+  "main": "upload.js",
+  "scripts": {
+    "start": "npm install && node upload.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.4.0",
+    "request": "^2.73.0",
+    "line-reader": "^0.4.0"
+  }
+}
